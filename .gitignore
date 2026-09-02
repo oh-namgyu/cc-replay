@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.pyc
+
+# Generated replays (never commit a rendered session)
+/replay.html
+/*.html
+
+# OS
+.DS_Store
+.env
+.env.*
+!.env.example
+*.pem
+*.key
