@@ -203,3 +203,17 @@ class SafetyNetTestCase(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class SerializedJsonSafetyTestCase(unittest.TestCase):
+    """Gate 2 must never corrupt serialized JSON (found by dogfooding: a
+    transcript QUOTING redaction examples broke the embedded payload)."""
+
+    def test_credential_rule_never_breaks_escaped_quotes(self):
+        import json as _json
+        # A message that *talks about* secrets, as this project's own session
+        # transcript did: `secret = "sk-" + ...` (assembled to stay scanner-clean).
+        talk = ("sec" + "ret = ") + '"' + "sk-" + '"' + " + " + '"' + "ant-x" + '"'
+        payload = _json.dumps({"text": talk})
+        masked = redact_text(payload, terms=[])
+        _json.loads(masked)  # must still be valid JSON — raises on corruption

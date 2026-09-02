@@ -18,9 +18,11 @@ from dataclasses import fields
 from pathlib import Path
 from typing import Any, List, Optional, Pattern, Sequence, Tuple
 
-# Characters a masked value may consist of: everything except whitespace and the
-# JSON/structural punctuation that must survive untouched.
-_VALUE = r"[^\s\"',;{}\[\]()]"
+# Characters a masked value may consist of: everything except whitespace, the
+# JSON/structural punctuation that must survive untouched, and the backslash —
+# in serialized JSON a quote appears as \" and a value match that swallowed the
+# backslash alone would break the string escaping around it.
+_VALUE = r"[^\s\"'\\,;{}\[\]()]"
 _TCHAR = r"[A-Za-z0-9_\-]"
 _CRED_NAMES = r"api[_-]?key|token|secret|password|passwd|authorization"
 
