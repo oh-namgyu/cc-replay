@@ -22,7 +22,7 @@ cc-replay reads one of those files and writes a single HTML document that recons
 as a vertical timeline — user turns, assistant replies, thinking blocks, tool calls paired with
 their results, and subagent runs nested under the tool call that spawned them.
 
-<!-- screenshot: docs/screenshot.png -->
+![A session replayed by cc-replay: header stats, an expanded tool call, and the playback bar](docs/screenshot.png)
 
 ## Why
 
