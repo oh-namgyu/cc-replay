@@ -1,16 +1,19 @@
 # cc-replay
 
+[![CI](https://github.com/oh-namgyu/cc-replay/actions/workflows/ci.yml/badge.svg)](https://github.com/oh-namgyu/cc-replay/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
+> **한글 요약**
+>
+> - Claude Code 가 남기는 `.jsonl` 세션 기록을 **HTML 파일 한 개**로 바꿔주는 CLI 입니다. 사람이 읽을 수 있는 타임라인으로 재구성합니다.
+> - 설치할 것이 없습니다. Python 3.9 이상이면 되고 **외부 의존성이 0개** 입니다 (표준 라이브러리만 사용).
+> - 바로 실행: `python3 -m cc_replay --latest` → 가장 최근 세션이 `replay.html` 로 저장됩니다.
+> - 결과물은 완전한 단독 파일입니다. CDN·폰트·이미지 등 **외부 요청을 전혀 하지 않아** 인터넷 없이 열립니다.
+> - **비밀정보 마스킹이 기본 ON** 입니다. API 키·토큰·이메일·홈 경로 등을 자동으로 가립니다.
+> - 다만 마스킹은 패턴 기반이라 **완벽하지 않습니다**. 공유 전에 반드시 결과 파일을 직접 확인하세요.
+> - 재생 컨트롤(재생/한 단계씩/스크러버), 도구 호출 접기, 서브에이전트 들여쓰기, 다크·라이트 테마를 지원합니다.
+
 Turn a Claude Code session transcript into a single self-contained HTML timeline you can scroll, replay and share.
-
-## 한눈 요약
-
-- Claude Code 가 남기는 `.jsonl` 세션 기록을 **HTML 파일 한 개**로 바꿔주는 CLI 입니다. 사람이 읽을 수 있는 타임라인으로 재구성합니다.
-- 설치할 것이 없습니다. Python 3.9 이상이면 되고 **외부 의존성이 0개** 입니다 (표준 라이브러리만 사용).
-- 바로 실행: `python3 -m cc_replay --latest` → 가장 최근 세션이 `replay.html` 로 저장됩니다.
-- 결과물은 완전한 단독 파일입니다. CDN·폰트·이미지 등 **외부 요청을 전혀 하지 않아** 인터넷 없이 열립니다.
-- **비밀정보 마스킹이 기본 ON** 입니다. API 키·토큰·이메일·홈 경로 등을 자동으로 가립니다.
-- 다만 마스킹은 패턴 기반이라 **완벽하지 않습니다**. 공유 전에 반드시 결과 파일을 직접 확인하세요.
-- 재생 컨트롤(재생/한 단계씩/스크러버), 도구 호출 접기, 서브에이전트 들여쓰기, 다크·라이트 테마를 지원합니다.
 
 ## What it is
 
@@ -142,9 +145,9 @@ No build step and no dependencies. Run the test suite with the standard library:
 python3 -m unittest discover -s tests -v
 ```
 
-76 tests cover transcript parsing, redaction, the CLI and the rendered page. They run on Python 3.9
+78 tests cover transcript parsing, redaction, the CLI and the rendered page. They run on Python 3.9
 through 3.12 and use synthetic fixtures only — no real transcript is ever read by a test.
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+MIT — see [LICENSE](LICENSE). Security policy: [SECURITY.md](SECURITY.md).
