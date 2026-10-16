@@ -6,6 +6,8 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-10-16
+
 ### Fixed
 
 - Redaction: the generic credential rule no longer treats a backslash as part
